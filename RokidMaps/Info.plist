@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>RokidMaps uses your location for turn-by-turn navigation.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>RokidMaps uses your location in the background to continue navigation when the screen is off.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>RokidMaps hosts a local TCP server so Rokid glasses can display navigation instructions.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_rokidmaps._tcp</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+</dict>
+</plist>
