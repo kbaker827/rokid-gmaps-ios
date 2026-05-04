@@ -16,7 +16,7 @@ Converted from the Android original. Replaces Google Maps SDK + Bluetooth SPP wi
 - **Destination search**: Nominatim (OpenStreetMap) geocoding — no API key required.
 - **Route calculation**: OSRM open-source routing — no API key required, driving mode.
 - **Turn-by-turn navigation**: Step advance at 150m threshold, off-route detection at 80m, 15s reroute cooldown.
-- **Glasses HUD**: TCP server on port 8085 streams location updates, step changes, and route geometry as JSON lines.
+- **Glasses HUD**: Bluetooth/RokidSDK sends location updates, step changes, and route geometry as JSON lines.
 - **MapKit overlay**: Route polyline drawn on the map view.
 - **Saved places**: Bookmark locations to quickly navigate back.
 - **Units**: Toggle imperial/metric in settings.
@@ -28,7 +28,7 @@ Converted from the Android original. Replaces Google Maps SDK + Bluetooth SPP wi
 | `NominatimClient` | `NominatimClient` (URLSession async/await) |
 | `OsrmClient` | `OsrmClient` (URLSession async/await) |
 | `NavigationManager` | `NavigationManager` (step advance, off-route, reroute) |
-| `BluetoothSppManager` | `GlassesServer` (NWListener TCP :8085) |
+| `BluetoothSppManager` | `GlassesServer` (RokidSDK) |
 | `HudStreamingService` | `NavViewModel` (location → glasses pipeline) |
 | Google Maps SDK | MapKit + MKPolyline |
 
@@ -55,14 +55,14 @@ The only thing left for each app is filling in the three credential constants (`
 
 ## Setup
 
-1. Open `RokidMaps.xcodeproj` in Xcode 15+.
+1. Open `RokidMaps.xcworkspace` in Xcode 15+ (after running `pod install`) 15+.
 2. Set your team in Signing & Capabilities.
 3. Enable **Location background mode** if you need background navigation.
 4. Build and run on an iPhone (iOS 17+).
 5. Allow location permission when prompted.
 6. *(Glasses now connect automatically over Bluetooth — no TCP port needed.)*
 
-## Glasses protocol (TCP :8085)
+## Data sent to the glasses
 
 Each message is a JSON object followed by `\n`:
 
