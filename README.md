@@ -32,6 +32,27 @@ Converted from the Android original. Replaces Google Maps SDK + Bluetooth SPP wi
 | `HudStreamingService` | `NavViewModel` (location → glasses pipeline) |
 | Google Maps SDK | MapKit + MKPolyline |
 
+## SDK Setup
+
+The glasses now connect over **Bluetooth via the Rokid AI glasses SDK** — no Wi-Fi port or TCP server needed.
+
+The only thing left for each app is filling in the three credential constants (`kAppKey`, `kAppSecret`, `kAccessKey`) from [account.rokid.com/#/setting/prove](https://account.rokid.com/#/setting/prove), then running `pod install`.
+
+1. **Get credentials** at <https://account.rokid.com/#/setting/prove> and paste them into the glasses Swift file:
+   ```swift
+   private let kAppKey    = "YOUR_APP_KEY"
+   private let kAppSecret = "YOUR_APP_SECRET"
+   private let kAccessKey = "YOUR_ACCESS_KEY"
+   ```
+
+2. **Install CocoaPods dependencies** from the repo root:
+   ```bash
+   pod install
+   open *.xcworkspace   # always open the .xcworkspace, not .xcodeproj
+   ```
+
+3. *(Glasses now connect automatically over Bluetooth — no TCP port needed.)*
+
 ## Setup
 
 1. Open `RokidMaps.xcodeproj` in Xcode 15+.
@@ -39,7 +60,7 @@ Converted from the Android original. Replaces Google Maps SDK + Bluetooth SPP wi
 3. Enable **Location background mode** if you need background navigation.
 4. Build and run on an iPhone (iOS 17+).
 5. Allow location permission when prompted.
-6. Connect Rokid glasses to the same Wi-Fi; point the glasses app at `<phone-ip>:8085`.
+6. *(Glasses now connect automatically over Bluetooth — no TCP port needed.)*
 
 ## Glasses protocol (TCP :8085)
 
